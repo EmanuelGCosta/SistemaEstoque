@@ -73,6 +73,16 @@ namespace SistemaEstoque.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Crowd {
+            get {
+                object obj = ResourceManager.GetObject("Crowd", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Enter {
             get {
                 object obj = ResourceManager.GetObject("Enter", resourceCulture);
