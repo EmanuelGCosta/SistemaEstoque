@@ -30,6 +30,8 @@
         {
             this.close = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.register_cPassword = new System.Windows.Forms.TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -39,19 +41,18 @@
             this.register_password = new System.Windows.Forms.TextBox();
             this.register_username = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.register_cPassword = new System.Windows.Forms.TextBox();
+            this.register_showPass = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // close
             // 
-            this.close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(113)))), ((int)(((byte)(73)))));
-            this.close.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(113)))), ((int)(((byte)(73)))));
+            this.close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(157)))), ((int)(((byte)(128)))));
+            this.close.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(157)))), ((int)(((byte)(128)))));
             this.close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.close.Location = new System.Drawing.Point(540, 0);
             this.close.Name = "close";
@@ -64,6 +65,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.Controls.Add(this.register_showPass);
             this.panel1.Controls.Add(this.pictureBox4);
             this.panel1.Controls.Add(this.register_cPassword);
             this.panel1.Controls.Add(this.pictureBox3);
@@ -79,6 +81,26 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(600, 460);
             this.panel1.TabIndex = 2;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::SistemaEstoque.Properties.Resources.Lock;
+            this.pictureBox4.Location = new System.Drawing.Point(161, 260);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 3, 3, 24);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(26, 26);
+            this.pictureBox4.TabIndex = 12;
+            this.pictureBox4.TabStop = false;
+            // 
+            // register_cPassword
+            // 
+            this.register_cPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.register_cPassword.Location = new System.Drawing.Point(193, 260);
+            this.register_cPassword.Margin = new System.Windows.Forms.Padding(3, 3, 3, 24);
+            this.register_cPassword.Name = "register_cPassword";
+            this.register_cPassword.PasswordChar = '*';
+            this.register_cPassword.Size = new System.Drawing.Size(245, 26);
+            this.register_cPassword.TabIndex = 11;
             // 
             // pictureBox3
             // 
@@ -173,25 +195,17 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Registre-se";
             // 
-            // pictureBox4
+            // register_showPass
             // 
-            this.pictureBox4.Image = global::SistemaEstoque.Properties.Resources.Lock;
-            this.pictureBox4.Location = new System.Drawing.Point(161, 260);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 3, 3, 24);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(26, 26);
-            this.pictureBox4.TabIndex = 12;
-            this.pictureBox4.TabStop = false;
-            // 
-            // register_cPassword
-            // 
-            this.register_cPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.register_cPassword.Location = new System.Drawing.Point(193, 260);
-            this.register_cPassword.Margin = new System.Windows.Forms.Padding(3, 3, 3, 24);
-            this.register_cPassword.Name = "register_cPassword";
-            this.register_cPassword.PasswordChar = '*';
-            this.register_cPassword.Size = new System.Drawing.Size(245, 26);
-            this.register_cPassword.TabIndex = 11;
+            this.register_showPass.AutoSize = true;
+            this.register_showPass.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.register_showPass.Location = new System.Drawing.Point(312, 288);
+            this.register_showPass.Name = "register_showPass";
+            this.register_showPass.Size = new System.Drawing.Size(126, 22);
+            this.register_showPass.TabIndex = 18;
+            this.register_showPass.Text = "Mostrar senha";
+            this.register_showPass.UseVisualStyleBackColor = true;
+            this.register_showPass.CheckedChanged += new System.EventHandler(this.register_showPass_CheckedChanged);
             // 
             // RegisterForm
             // 
@@ -207,10 +221,10 @@
             this.Text = "RegisterForm";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -230,5 +244,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.TextBox register_cPassword;
+        private System.Windows.Forms.CheckBox register_showPass;
     }
 }
