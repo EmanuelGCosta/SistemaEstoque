@@ -242,6 +242,7 @@
             // 
             // pictureBox4
             // 
+            this.pictureBox4.Image = global::SistemaEstoque.Properties.Resources.Money_Bag;
             this.pictureBox4.Location = new System.Drawing.Point(12, 45);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(80, 80);
@@ -250,6 +251,7 @@
             // 
             // pictureBox3
             // 
+            this.pictureBox3.Image = global::SistemaEstoque.Properties.Resources.Cash;
             this.pictureBox3.Location = new System.Drawing.Point(12, 45);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(80, 80);
@@ -258,6 +260,7 @@
             // 
             // pictureBox2
             // 
+            this.pictureBox2.Image = global::SistemaEstoque.Properties.Resources.People;
             this.pictureBox2.Location = new System.Drawing.Point(12, 45);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(80, 80);
