@@ -39,13 +39,15 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.adminAddUser1 = new SistemaEstoque.AdminAddUser();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // close
@@ -205,15 +207,6 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Bem Vindo,";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::SistemaEstoque.Properties.Resources.Account;
-            this.pictureBox1.Location = new System.Drawing.Point(77, 25);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(80, 80);
-            this.pictureBox1.TabIndex = 17;
-            this.pictureBox1.TabStop = false;
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(113)))), ((int)(((byte)(73)))));
@@ -246,11 +239,28 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.adminAddUser1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(236, 45);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1044, 675);
             this.panel3.TabIndex = 3;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::SistemaEstoque.Properties.Resources.Account;
+            this.pictureBox1.Location = new System.Drawing.Point(77, 25);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox1.TabIndex = 17;
+            this.pictureBox1.TabStop = false;
+            // 
+            // adminAddUser1
+            // 
+            this.adminAddUser1.Location = new System.Drawing.Point(0, 0);
+            this.adminAddUser1.Name = "adminAddUser1";
+            this.adminAddUser1.Size = new System.Drawing.Size(1044, 675);
+            this.adminAddUser1.TabIndex = 1;
             // 
             // MainForm
             // 
@@ -266,9 +276,10 @@
             this.Text = "MainForm";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -290,5 +301,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel3;
+        private AdminAddUser adminAddUser1;
     }
 }
