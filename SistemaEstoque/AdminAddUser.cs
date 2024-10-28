@@ -69,6 +69,7 @@ namespace SistemaEstoque
 
                                     insertD.ExecuteNonQuery();
                                     ClearField();
+                                    displayAllUsersData();
 
                                     MessageBox.Show("Adicionado com sucesso!", "Sistema informa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
@@ -120,7 +121,7 @@ namespace SistemaEstoque
             }
             else
             {
-                if (MessageBox.Show("Tem certeza que quer atualizar o usuário com ID: " + getID + "?", "Mensagem de confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Tem certeza que quer atualizar o usuário com o ID: " + getID + "?", "Mensagem de confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     if (checkConnection())
                     {
@@ -167,10 +168,10 @@ namespace SistemaEstoque
         {
             if (e.RowIndex != -1)
             {
-                
+
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
 
-                int getID = (int)row.Cells[0].Value;
+                getID = (int)row.Cells[0].Value;
                 string username = row.Cells[1].Value.ToString();
                 string password = row.Cells[2].Value.ToString();
                 string role = row.Cells[3].Value.ToString();
@@ -183,6 +184,52 @@ namespace SistemaEstoque
 
 
             }
+        }
+
+        private void addUsers_removeBtn_Click(object sender, EventArgs e)
+        {
+            if (addUsers_username.Text == "" || addUsers_password.Text == "" || addUsers_role.Text == "" || addUsers_status.Text == "")
+            {
+                MessageBox.Show("Campos em branco", "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if (MessageBox.Show("Tem certeza que quer DELETAR o usuário com o ID: " + getID + "?", "Mensagem de confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    if (checkConnection())
+                    {
+                        try
+                        {
+                            connect.Open();
+
+                            string updateData = "DELETE FROM users WHERE id = @id";
+
+                            using (SqlCommand updateD = new SqlCommand(updateData, connect))
+                            {
+                                updateD.Parameters.AddWithValue("@id", getID);
+
+                                updateD.ExecuteNonQuery();
+                                ClearField();
+                                displayAllUsersData();
+
+                                MessageBox.Show("Usuário removido com sucesso!", "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            }
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Conexão com banco de dados falhou: " + ex, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        finally
+                        {
+                            connect.Close();
+                        }
+                    }
+                }
+
+            }
+
         }
     }
 }
