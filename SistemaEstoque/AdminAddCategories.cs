@@ -64,6 +64,7 @@ namespace SistemaEstoque
                                 insertD.Parameters.AddWithValue("@date", today); 
 
                                 insertD.ExecuteNonQuery();
+                                clearFields();
                                 displayCategoriesData();
 
                                 MessageBox.Show("Categoria adicionada com sucesso!", "Mensagem de êxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -83,6 +84,11 @@ namespace SistemaEstoque
 
         }
 
+        public void clearFields()
+        {
+            addCategory_category.Text = "";
+        }
+
         public bool checkConnection()
         {
             if (connect.State == ConnectionState.Closed)
@@ -92,6 +98,20 @@ namespace SistemaEstoque
             else
             {
                 return false;
+            }
+        }
+
+        private int getID = 0;
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+
+                getID = (int)row.Cells[0].Value;
+
+                addCategory_category.Text = row.Cells[1].Value.ToString();
             }
         }
     }
