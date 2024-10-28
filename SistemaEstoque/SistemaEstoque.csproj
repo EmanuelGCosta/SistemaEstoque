@@ -61,12 +61,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminAddCategories.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdminAddCategories.Designer.cs">
+      <DependentUpon>AdminAddCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminAddUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdminAddUser.Designer.cs">
+      <DependentUpon>AdminAddUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminDashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="AdminDashboard.Designer.cs">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="CategoriesData.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +100,13 @@
     <Compile Include="RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UsersData.cs" />
+    <EmbeddedResource Include="AdminAddCategories.resx">
+      <DependentUpon>AdminAddCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminAddUser.resx">
+      <DependentUpon>AdminAddUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminDashboard.resx">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
     </EmbeddedResource>
