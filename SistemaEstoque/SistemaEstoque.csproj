@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddProductsData.cs" />
     <Compile Include="AdminAddCategories.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -171,6 +172,9 @@
     <Content Include="assets\Lock.png" />
     <Content Include="assets\Money Bag.png" />
     <Content Include="assets\People.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Products_Directory\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

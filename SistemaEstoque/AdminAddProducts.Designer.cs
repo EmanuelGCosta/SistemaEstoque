@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.buaddProducts_clearBtn = new System.Windows.Forms.Button();
             this.addProducts_deleteBtn = new System.Windows.Forms.Button();
@@ -51,18 +52,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.addProducts_prodID = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.addProducts_imageView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(18, 18);
             this.panel1.Margin = new System.Windows.Forms.Padding(18);
             this.panel1.Name = "panel1";
@@ -78,15 +80,6 @@
             this.label2.Size = new System.Drawing.Size(188, 22);
             this.label2.TabIndex = 2;
             this.label2.Text = "Todos os Produtos";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 36);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(12, 36, 12, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(984, 294);
-            this.dataGridView1.TabIndex = 0;
             // 
             // panel2
             // 
@@ -125,12 +118,13 @@
             this.buaddProducts_clearBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buaddProducts_clearBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buaddProducts_clearBtn.ForeColor = System.Drawing.Color.White;
-            this.buaddProducts_clearBtn.Location = new System.Drawing.Point(553, 199);
+            this.buaddProducts_clearBtn.Location = new System.Drawing.Point(597, 179);
             this.buaddProducts_clearBtn.Name = "buaddProducts_clearBtn";
             this.buaddProducts_clearBtn.Size = new System.Drawing.Size(120, 34);
             this.buaddProducts_clearBtn.TabIndex = 19;
             this.buaddProducts_clearBtn.Text = "Limpar";
             this.buaddProducts_clearBtn.UseVisualStyleBackColor = false;
+            this.buaddProducts_clearBtn.Click += new System.EventHandler(this.buaddProducts_clearBtn_Click);
             // 
             // addProducts_deleteBtn
             // 
@@ -142,12 +136,13 @@
             this.addProducts_deleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addProducts_deleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addProducts_deleteBtn.ForeColor = System.Drawing.Color.White;
-            this.addProducts_deleteBtn.Location = new System.Drawing.Point(408, 199);
+            this.addProducts_deleteBtn.Location = new System.Drawing.Point(450, 179);
             this.addProducts_deleteBtn.Name = "addProducts_deleteBtn";
             this.addProducts_deleteBtn.Size = new System.Drawing.Size(120, 34);
             this.addProducts_deleteBtn.TabIndex = 18;
             this.addProducts_deleteBtn.Text = "Deletar";
             this.addProducts_deleteBtn.UseVisualStyleBackColor = false;
+            this.addProducts_deleteBtn.Click += new System.EventHandler(this.addProducts_deleteBtn_Click);
             // 
             // buttoaddProducts_updateBtn
             // 
@@ -159,12 +154,13 @@
             this.buttoaddProducts_updateBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttoaddProducts_updateBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttoaddProducts_updateBtn.ForeColor = System.Drawing.Color.White;
-            this.buttoaddProducts_updateBtn.Location = new System.Drawing.Point(263, 199);
+            this.buttoaddProducts_updateBtn.Location = new System.Drawing.Point(301, 179);
             this.buttoaddProducts_updateBtn.Name = "buttoaddProducts_updateBtn";
             this.buttoaddProducts_updateBtn.Size = new System.Drawing.Size(120, 34);
             this.buttoaddProducts_updateBtn.TabIndex = 17;
             this.buttoaddProducts_updateBtn.Text = "Atualizar";
             this.buttoaddProducts_updateBtn.UseVisualStyleBackColor = false;
+            this.buttoaddProducts_updateBtn.Click += new System.EventHandler(this.buttoaddProducts_updateBtn_Click);
             // 
             // addProducts_addBtn
             // 
@@ -176,7 +172,7 @@
             this.addProducts_addBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addProducts_addBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addProducts_addBtn.ForeColor = System.Drawing.Color.White;
-            this.addProducts_addBtn.Location = new System.Drawing.Point(118, 199);
+            this.addProducts_addBtn.Location = new System.Drawing.Point(147, 179);
             this.addProducts_addBtn.Name = "addProducts_addBtn";
             this.addProducts_addBtn.Size = new System.Drawing.Size(120, 34);
             this.addProducts_addBtn.TabIndex = 16;
@@ -200,6 +196,7 @@
             this.addProducts_importBtn.TabIndex = 15;
             this.addProducts_importBtn.Text = "Importar";
             this.addProducts_importBtn.UseVisualStyleBackColor = false;
+            this.addProducts_importBtn.Click += new System.EventHandler(this.addProducts_importBtn_Click);
             // 
             // panel3
             // 
@@ -216,6 +213,7 @@
             this.addProducts_imageView.Location = new System.Drawing.Point(0, 0);
             this.addProducts_imageView.Name = "addProducts_imageView";
             this.addProducts_imageView.Size = new System.Drawing.Size(112, 112);
+            this.addProducts_imageView.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.addProducts_imageView.TabIndex = 0;
             this.addProducts_imageView.TabStop = false;
             // 
@@ -224,8 +222,8 @@
             this.addProducts_prodStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addProducts_prodStatus.FormattingEnabled = true;
             this.addProducts_prodStatus.Items.AddRange(new object[] {
-            "Disponivel",
-            "Não disponivel"});
+            "Disponível",
+            "Não disponível"});
             this.addProducts_prodStatus.Location = new System.Drawing.Point(526, 109);
             this.addProducts_prodStatus.Margin = new System.Windows.Forms.Padding(8);
             this.addProducts_prodStatus.Name = "addProducts_prodStatus";
@@ -255,11 +253,11 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(465, 70);
+            this.label6.Location = new System.Drawing.Point(446, 70);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 20);
+            this.label6.Size = new System.Drawing.Size(69, 20);
             this.label6.TabIndex = 10;
-            this.label6.Text = "Stock";
+            this.label6.Text = "Estoque";
             // 
             // addProducts_prodPrice
             // 
@@ -274,11 +272,11 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(465, 28);
+            this.label5.Location = new System.Drawing.Point(440, 28);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(50, 20);
+            this.label5.Size = new System.Drawing.Size(75, 20);
             this.label5.TabIndex = 8;
-            this.label5.Text = "Preço";
+            this.label5.Text = "Preço R$";
             // 
             // addProducts_category
             // 
@@ -325,7 +323,7 @@
             this.addProducts_prodID.Location = new System.Drawing.Point(147, 25);
             this.addProducts_prodID.Margin = new System.Windows.Forms.Padding(8);
             this.addProducts_prodID.Name = "addProducts_prodID";
-            this.addProducts_prodID.Size = new System.Drawing.Size(65, 26);
+            this.addProducts_prodID.Size = new System.Drawing.Size(101, 26);
             this.addProducts_prodID.TabIndex = 2;
             // 
             // label3
@@ -337,7 +335,37 @@
             this.label3.Size = new System.Drawing.Size(105, 20);
             this.label3.TabIndex = 1;
             this.label3.Text = "Id do Produto";
-            
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(113)))), ((int)(((byte)(73)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(113)))), ((int)(((byte)(73)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle10;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 36);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(12, 36, 12, 12);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.Size = new System.Drawing.Size(984, 294);
+            this.dataGridView1.TabIndex = 3;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // AdminAddProducts
             // 
@@ -349,11 +377,11 @@
             this.Size = new System.Drawing.Size(1044, 675);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.addProducts_imageView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -363,7 +391,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox addProducts_prodID;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox addProducts_prodName;
@@ -383,5 +410,6 @@
         private System.Windows.Forms.Button addProducts_deleteBtn;
         private System.Windows.Forms.Button buttoaddProducts_updateBtn;
         private System.Windows.Forms.Button addProducts_addBtn;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
