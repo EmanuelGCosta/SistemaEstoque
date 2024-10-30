@@ -32,7 +32,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.leave_btn = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -44,7 +43,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.adminAddUser1 = new SistemaEstoque.AdminAddUser();
-            this.adminAddCategories1 = new SistemaEstoque.AdminAddCategories();
+            this.adminAddProducts1 = new SistemaEstoque.AdminAddProducts();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -106,21 +105,6 @@
             this.leave_btn.Text = "Sair";
             this.leave_btn.UseVisualStyleBackColor = false;
             this.leave_btn.Click += new System.EventHandler(this.leave_btn_Click);
-            // 
-            // button5
-            // 
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(145)))), ((int)(((byte)(105)))));
-            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(145)))), ((int)(((byte)(105)))));
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(0, 496);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(236, 52);
-            this.button5.TabIndex = 15;
-            this.button5.Text = "Fornecedores";
-            this.button5.UseVisualStyleBackColor = true;
             // 
             // button6
             // 
@@ -212,7 +196,6 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(113)))), ((int)(((byte)(73)))));
             this.panel2.Controls.Add(this.leave_btn);
-            this.panel2.Controls.Add(this.button5);
             this.panel2.Controls.Add(this.button6);
             this.panel2.Controls.Add(this.button4);
             this.panel2.Controls.Add(this.button3);
@@ -249,7 +232,7 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.adminAddCategories1);
+            this.panel3.Controls.Add(this.adminAddProducts1);
             this.panel3.Controls.Add(this.adminAddUser1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(236, 45);
@@ -264,12 +247,12 @@
             this.adminAddUser1.Size = new System.Drawing.Size(1044, 675);
             this.adminAddUser1.TabIndex = 1;
             // 
-            // adminAddCategories1
+            // adminAddProducts1
             // 
-            this.adminAddCategories1.Location = new System.Drawing.Point(0, 0);
-            this.adminAddCategories1.Name = "adminAddCategories1";
-            this.adminAddCategories1.Size = new System.Drawing.Size(1044, 675);
-            this.adminAddCategories1.TabIndex = 2;
+            this.adminAddProducts1.Location = new System.Drawing.Point(0, 0);
+            this.adminAddProducts1.Name = "adminAddProducts1";
+            this.adminAddProducts1.Size = new System.Drawing.Size(1044, 675);
+            this.adminAddProducts1.TabIndex = 2;
             // 
             // MainForm
             // 
@@ -299,7 +282,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button leave_btn;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
@@ -311,6 +293,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel3;
         private AdminAddUser adminAddUser1;
-        private AdminAddCategories adminAddCategories1;
+        private AdminAddProducts adminAddProducts1;
     }
 }

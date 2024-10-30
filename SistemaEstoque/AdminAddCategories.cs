@@ -13,7 +13,7 @@ namespace SistemaEstoque
         public AdminAddCategories()
         {
             InitializeComponent();
-            displayCategoriesData(); 
+            displayCategoriesData();
         }
 
         public void displayCategoriesData()
@@ -38,8 +38,8 @@ namespace SistemaEstoque
 
                     string checkCat = "SELECT * FROM categories WHERE category = @cat";
 
-                    using (SqlCommand cmd = new SqlCommand(checkCat, connect)) 
-                    { 
+                    using (SqlCommand cmd = new SqlCommand(checkCat, connect))
+                    {
                         cmd.Parameters.AddWithValue("@cat", addCategory_category.Text.Trim());
 
                         SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -55,13 +55,13 @@ namespace SistemaEstoque
                         {
                             string insertData = "INSERT INTO categories (category, date) VALUES (@cat, @date)";
 
-                            using (SqlCommand insertD =  new SqlCommand(insertData, connect))
+                            using (SqlCommand insertD = new SqlCommand(insertData, connect))
                             {
                                 insertD.Parameters.AddWithValue("@cat", addCategory_category.Text.Trim());
-                                
-                                DateTime today = DateTime.Today;  
 
-                                insertD.Parameters.AddWithValue("@date", today); 
+                                DateTime today = DateTime.Today;
+
+                                insertD.Parameters.AddWithValue("@date", today);
 
                                 insertD.ExecuteNonQuery();
                                 clearFields();
@@ -72,12 +72,12 @@ namespace SistemaEstoque
                         }
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show("Conexão com banco de dados falhou: " + ex, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
-                { 
+                {
                     connect.Close();
                 }
             }
@@ -112,6 +112,92 @@ namespace SistemaEstoque
                 getID = (int)row.Cells[0].Value;
 
                 addCategory_category.Text = row.Cells[1].Value.ToString();
+            }
+        }
+
+        private void addCategory_updateBtn_Click(object sender, EventArgs e)
+        {
+            if (addCategory_category.Text == "")
+            {
+                MessageBox.Show("Campo em branco", "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (MessageBox.Show("Tem certezaque deseja atualizar a categoria com ID de: " + getID + "?", "Mensagem de confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                if (checkConnection())
+                {
+                    try
+                    {
+                        connect.Open();
+
+
+                        string updateData = "UPDATE categories SET category = @cat WHERE id = @id";
+
+                        using (SqlCommand updateD = new SqlCommand(updateData, connect))
+                        {
+                            updateD.Parameters.AddWithValue("@cat", addCategory_category.Text.Trim());
+                            updateD.Parameters.AddWithValue("@id", getID);
+
+                            updateD.ExecuteNonQuery();
+                            clearFields();
+                            displayCategoriesData();
+
+                            MessageBox.Show("Categoria atualizada com sucesso!", "Mensagem de êxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+
+                    }
+
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Conexão com banco de dados falhou: " + ex, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        connect.Close();
+                    }
+                }
+            }
+        }
+
+        private void addCategory_removeBtn_Click(object sender, EventArgs e)
+        {
+            if (addCategory_category.Text == "")
+            {
+                MessageBox.Show("Campo em branco", "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (MessageBox.Show("Tem certezaque deseja remover a categoria com ID de: " + getID + "?", "Mensagem de confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                if (checkConnection())
+                {
+                    try
+                    {
+                        connect.Open();
+
+
+                        string removeData = "DELETE FROM categories WHERE id = @id";
+
+                        using (SqlCommand deleteD = new SqlCommand(removeData, connect))
+                        {
+                            deleteD.Parameters.AddWithValue("@cat", addCategory_category.Text.Trim());
+                            deleteD.Parameters.AddWithValue("@id", getID);
+
+                            deleteD.ExecuteNonQuery();
+                            clearFields();
+                            displayCategoriesData();
+
+                            MessageBox.Show("Categoria deletada com sucesso!", "Mensagem de êxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+
+                    }
+
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Conexão com banco de dados falhou: " + ex, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        connect.Close();
+                    }
+                }
             }
         }
     }
