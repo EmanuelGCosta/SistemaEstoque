@@ -42,8 +42,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.adminAddUser1 = new SistemaEstoque.AdminAddUser();
+            this.adminAddCategories2 = new SistemaEstoque.AdminAddCategories();
+            this.adminAddUser2 = new SistemaEstoque.AdminAddUser();
+            this.adminAddProducts2 = new SistemaEstoque.AdminAddProducts();
+            this.adminAddCategories1 = new SistemaEstoque.AdminAddCategories();
             this.adminAddProducts1 = new SistemaEstoque.AdminAddProducts();
+            this.adminAddUser1 = new SistemaEstoque.AdminAddUser();
+            this.adminAddProducts3 = new SistemaEstoque.AdminAddProducts();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -118,7 +123,6 @@
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(236, 52);
             this.button6.TabIndex = 14;
-            this.button6.Text = "Clientes";
             this.button6.UseVisualStyleBackColor = true;
             // 
             // button4
@@ -232,6 +236,11 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.adminAddProducts3);
+            this.panel3.Controls.Add(this.adminAddCategories2);
+            this.panel3.Controls.Add(this.adminAddUser2);
+            this.panel3.Controls.Add(this.adminAddProducts2);
+            this.panel3.Controls.Add(this.adminAddCategories1);
             this.panel3.Controls.Add(this.adminAddProducts1);
             this.panel3.Controls.Add(this.adminAddUser1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -240,12 +249,33 @@
             this.panel3.Size = new System.Drawing.Size(1044, 675);
             this.panel3.TabIndex = 3;
             // 
-            // adminAddUser1
+            // adminAddCategories2
             // 
-            this.adminAddUser1.Location = new System.Drawing.Point(0, 0);
-            this.adminAddUser1.Name = "adminAddUser1";
-            this.adminAddUser1.Size = new System.Drawing.Size(1044, 675);
-            this.adminAddUser1.TabIndex = 1;
+            this.adminAddCategories2.Location = new System.Drawing.Point(0, 0);
+            this.adminAddCategories2.Name = "adminAddCategories2";
+            this.adminAddCategories2.Size = new System.Drawing.Size(1044, 675);
+            this.adminAddCategories2.TabIndex = 6;
+            // 
+            // adminAddUser2
+            // 
+            this.adminAddUser2.Location = new System.Drawing.Point(0, 0);
+            this.adminAddUser2.Name = "adminAddUser2";
+            this.adminAddUser2.Size = new System.Drawing.Size(1044, 675);
+            this.adminAddUser2.TabIndex = 5;
+            // 
+            // adminAddProducts2
+            // 
+            this.adminAddProducts2.Location = new System.Drawing.Point(0, 0);
+            this.adminAddProducts2.Name = "adminAddProducts2";
+            this.adminAddProducts2.Size = new System.Drawing.Size(1044, 675);
+            this.adminAddProducts2.TabIndex = 4;
+            // 
+            // adminAddCategories1
+            // 
+            this.adminAddCategories1.Location = new System.Drawing.Point(0, 0);
+            this.adminAddCategories1.Name = "adminAddCategories1";
+            this.adminAddCategories1.Size = new System.Drawing.Size(1044, 675);
+            this.adminAddCategories1.TabIndex = 3;
             // 
             // adminAddProducts1
             // 
@@ -253,6 +283,20 @@
             this.adminAddProducts1.Name = "adminAddProducts1";
             this.adminAddProducts1.Size = new System.Drawing.Size(1044, 675);
             this.adminAddProducts1.TabIndex = 2;
+            // 
+            // adminAddUser1
+            // 
+            this.adminAddUser1.Location = new System.Drawing.Point(0, 0);
+            this.adminAddUser1.Name = "adminAddUser1";
+            this.adminAddUser1.Size = new System.Drawing.Size(1044, 675);
+            this.adminAddUser1.TabIndex = 1;
+            // 
+            // adminAddProducts3
+            // 
+            this.adminAddProducts3.Location = new System.Drawing.Point(0, 0);
+            this.adminAddProducts3.Name = "adminAddProducts3";
+            this.adminAddProducts3.Size = new System.Drawing.Size(1044, 675);
+            this.adminAddProducts3.TabIndex = 7;
             // 
             // MainForm
             // 
@@ -294,5 +338,10 @@
         private System.Windows.Forms.Panel panel3;
         private AdminAddUser adminAddUser1;
         private AdminAddProducts adminAddProducts1;
+        private AdminAddCategories adminAddCategories1;
+        private AdminAddProducts adminAddProducts2;
+        private AdminAddUser adminAddUser2;
+        private AdminAddCategories adminAddCategories2;
+        private AdminAddProducts adminAddProducts3;
     }
 }

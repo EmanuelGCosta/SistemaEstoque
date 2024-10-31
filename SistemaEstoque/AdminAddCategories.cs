@@ -200,5 +200,10 @@ namespace SistemaEstoque
                 }
             }
         }
+
+        private void addCategory_clearBtn_Click(object sender, EventArgs e)
+        {
+            clearFields();
+        }
     }
 }
