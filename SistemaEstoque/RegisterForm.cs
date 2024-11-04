@@ -67,7 +67,7 @@ namespace SistemaEstoque
                                     insertD.Parameters.AddWithValue("@usern", register_username.Text.Trim());
                                     insertD.Parameters.AddWithValue("@pass", register_password.Text.Trim());
                                     insertD.Parameters.AddWithValue("@role", "Caixa");
-                                    insertD.Parameters.AddWithValue("@status", "Aprovado");
+                                    insertD.Parameters.AddWithValue("@status", "Ativo");
 
                                     DateTime today = DateTime.Today;
                                     insertD.Parameters.AddWithValue("@date", today);

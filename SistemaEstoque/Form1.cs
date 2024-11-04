@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.Remoting.Contexts;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -15,7 +8,7 @@ namespace SistemaEstoque
 {
     public partial class Form1 : Form
     {
-        SqlConnection 
+        SqlConnection
             connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\emanu\Documents\inventario.mdf;Integrated Security=True;Connect Timeout=30");
         public Form1()
         {
@@ -26,7 +19,7 @@ namespace SistemaEstoque
         private void label5_Click(object sender, EventArgs e)
         {
             RegisterForm registerForm = new RegisterForm();
-            registerForm.Show();  
+            registerForm.Show();
             this.Hide();
         }
 
@@ -39,35 +32,50 @@ namespace SistemaEstoque
         {
             if (checkConnection())
             {
-                //if(login_username.Text == "" || login_password.Text == "")
-                //{
-                //    MessageBox.Show("Preencha todos os campos")
-                //}
                 try
                 {
                     connect.Open();
 
-                    string selectData = "SELECT * FROM users WHERE username = @usern AND password = @pass";
+                    string selectData = "SELECT COUNT(*) FROM users WHERE username = @usern AND password = @pass AND status = @status";
 
 
                     using (SqlCommand cmd = new SqlCommand(selectData, connect))
                     {
                         cmd.Parameters.AddWithValue("@usern", login_username.Text.Trim());
                         cmd.Parameters.AddWithValue("@pass", login_password.Text.Trim());
+                        cmd.Parameters.AddWithValue("@status", "Ativo");
 
-                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                        DataTable table = new DataTable();
-                        adapter.Fill(table);
+                        int rowCount = (int)cmd.ExecuteScalar();
 
-                        if (table.Rows.Count > 0)
+                        if (rowCount > 0)
                         {
-                            MessageBox.Show("Logado com sucesso!", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            string selectRole = "SELECT role FROM users WHERE username = @usern AND password = @pass";
 
-                            MainForm mForm = new MainForm();
+                            using (SqlCommand getRole = new SqlCommand(selectRole, connect))
+                            {
+                                getRole.Parameters.AddWithValue("@usern", login_username.Text.Trim());
+                                getRole.Parameters.AddWithValue("@pass", login_password.Text.Trim());
 
-                            mForm.Show();
+                                string userRole = getRole.ExecuteScalar() as string;
 
-                            this.Hide();
+                                MessageBox.Show("Logado com sucesso!", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                this.Hide();
+
+                                if (userRole == "Admin")
+                                {
+                                    MainForm mForm = new MainForm();
+                                    mForm.Show();
+                                }
+                                else if (userRole == "Caixa")
+                                {
+                                    CashierMainForm cForm = new CashierMainForm();
+                                    cForm.Show();
+                                }
+
+
+                            }
+
+
                         }
                         else
                         {

@@ -42,13 +42,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.adminAddProducts3 = new SistemaEstoque.AdminAddProducts();
             this.adminAddCategories2 = new SistemaEstoque.AdminAddCategories();
             this.adminAddUser2 = new SistemaEstoque.AdminAddUser();
             this.adminAddProducts2 = new SistemaEstoque.AdminAddProducts();
             this.adminAddCategories1 = new SistemaEstoque.AdminAddCategories();
             this.adminAddProducts1 = new SistemaEstoque.AdminAddProducts();
             this.adminAddUser1 = new SistemaEstoque.AdminAddUser();
-            this.adminAddProducts3 = new SistemaEstoque.AdminAddProducts();
+            this.adminAddUser3 = new SistemaEstoque.AdminAddUser();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -236,6 +237,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.adminAddUser3);
             this.panel3.Controls.Add(this.adminAddProducts3);
             this.panel3.Controls.Add(this.adminAddCategories2);
             this.panel3.Controls.Add(this.adminAddUser2);
@@ -248,6 +250,13 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1044, 675);
             this.panel3.TabIndex = 3;
+            // 
+            // adminAddProducts3
+            // 
+            this.adminAddProducts3.Location = new System.Drawing.Point(0, 0);
+            this.adminAddProducts3.Name = "adminAddProducts3";
+            this.adminAddProducts3.Size = new System.Drawing.Size(1044, 675);
+            this.adminAddProducts3.TabIndex = 7;
             // 
             // adminAddCategories2
             // 
@@ -291,12 +300,12 @@
             this.adminAddUser1.Size = new System.Drawing.Size(1044, 675);
             this.adminAddUser1.TabIndex = 1;
             // 
-            // adminAddProducts3
+            // adminAddUser3
             // 
-            this.adminAddProducts3.Location = new System.Drawing.Point(0, 0);
-            this.adminAddProducts3.Name = "adminAddProducts3";
-            this.adminAddProducts3.Size = new System.Drawing.Size(1044, 675);
-            this.adminAddProducts3.TabIndex = 7;
+            this.adminAddUser3.Location = new System.Drawing.Point(0, -3);
+            this.adminAddUser3.Name = "adminAddUser3";
+            this.adminAddUser3.Size = new System.Drawing.Size(1044, 675);
+            this.adminAddUser3.TabIndex = 8;
             // 
             // MainForm
             // 
@@ -343,5 +352,6 @@
         private AdminAddUser adminAddUser2;
         private AdminAddCategories adminAddCategories2;
         private AdminAddProducts adminAddProducts3;
+        private AdminAddUser adminAddUser3;
     }
 }
