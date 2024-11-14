@@ -20,6 +20,17 @@ namespace SistemaEstoque
             displayAllProducts();
         }
 
+        public void refresData()
+        {
+            if (InvokeRequired)
+            {
+                Invoke((MethodInvoker)refresData);
+                return;
+            }
+            displayCategories();
+            displayAllProducts();
+        }
+
         public void displayAllProducts()
         {
             AddProductsData apData = new AddProductsData();
@@ -68,7 +79,7 @@ namespace SistemaEstoque
                 }
                 catch (Exception ex)
                 {
-
+                    MessageBox.Show("Falha na conexão com banco de dados: " + ex, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {

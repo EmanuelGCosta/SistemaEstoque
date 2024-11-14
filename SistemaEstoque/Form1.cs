@@ -8,6 +8,7 @@ namespace SistemaEstoque
 {
     public partial class Form1 : Form
     {
+        public static string username;
         SqlConnection
             connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\emanu\Documents\inventario.mdf;Integrated Security=True;Connect Timeout=30");
         public Form1()
@@ -110,5 +111,7 @@ namespace SistemaEstoque
         {
             login_password.PasswordChar = login_showPass.Checked ? '\0' : '*';
         }
+
+
     }
 }
