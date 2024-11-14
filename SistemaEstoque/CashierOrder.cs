@@ -469,7 +469,7 @@ namespace SistemaEstoque
                 }
             }
             displayTotalPrice();
- 
+
         }
 
         private void cashierOrder_amount_KeyDown(object sender, KeyEventArgs e)
@@ -516,9 +516,11 @@ namespace SistemaEstoque
 
                 printPreviewDialog1.Document = printDocument1;
                 printPreviewDialog1.ShowDialog();
+
+                cashierOrder_amount.Text = "";
+                cashierOrder_change.Text = "";
             }
-            cashierOrder_amount.Text = "";
-            cashierOrder_change.Text = "";
+
         }
 
         private void printDocument1_BeginPrint(object sender, PrintEventArgs e)

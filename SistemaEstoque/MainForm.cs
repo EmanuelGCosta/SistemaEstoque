@@ -15,14 +15,13 @@ namespace SistemaEstoque
         public MainForm()
         {
             InitializeComponent();
+            displayUsername();
         }
 
         public void displayUsername()
         {
             string username = Form1.username.Substring(0, 1).ToUpper() + Form1.username.Substring(1).ToLower();
             user_username.Text = username;
-
-
         }
 
         private void close_Click(object sender, EventArgs e)
