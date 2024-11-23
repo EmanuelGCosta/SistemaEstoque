@@ -27,6 +27,7 @@ namespace SistemaEstoque
                 Invoke((MethodInvoker)refresData);
                 return;
             }
+            addProducts_category.Items.Clear();
             displayCategories();
             displayAllProducts();
         }
@@ -43,7 +44,7 @@ namespace SistemaEstoque
         public bool checkEmptyFIelds()
         {
             if (addProducts_prodID.Text == "" || addProducts_prodName.Text == "" || addProducts_category.SelectedIndex == -1
-                || addProducts_prodPrice.Text == "" || addProducts_prodStock.Text == "" || addProducts_prodStatus.SelectedIndex == -1 || addProducts_imageView.Image == null)
+                || addProducts_prodPrice.Text == "" || addProducts_prodStock.Text == "" || addProducts_imageView.Image == null)
             {
                 return true;
             }
@@ -72,6 +73,7 @@ namespace SistemaEstoque
                             while (reader.Read())
                             {
                                 addProducts_category.Items.Add(reader["category"].ToString());
+
                             }
                         }
 
@@ -146,7 +148,17 @@ namespace SistemaEstoque
                                     insertD.Parameters.AddWithValue("@price", addProducts_prodPrice.Text.Trim());
                                     insertD.Parameters.AddWithValue("@stock", addProducts_prodStock.Text.Trim());
                                     insertD.Parameters.AddWithValue("@path", path);
-                                    insertD.Parameters.AddWithValue("@status", addProducts_prodStatus.SelectedItem);
+
+                                    string status = "";
+                                    if (Convert.ToInt32(addProducts_prodStock.Text) > 0)
+                                    {
+                                        status = "Disponível";
+                                    }
+                                    else
+                                    {
+                                        status = "Não disponível";
+                                    }
+                                    insertD.Parameters.AddWithValue("@status", status);
 
                                     DateTime date = DateTime.Today;
                                     insertD.Parameters.AddWithValue("@date", date);
@@ -166,7 +178,7 @@ namespace SistemaEstoque
                     }
                     finally
                     {
-                        connect.Close(); 
+                        connect.Close();
 
                     }
                 }
@@ -193,7 +205,7 @@ namespace SistemaEstoque
             addProducts_category.SelectedIndex = -1;
             addProducts_prodPrice.Text = "";
             addProducts_prodStock.Text = "";
-            addProducts_prodStatus.SelectedIndex = -1;
+            //addProducts_prodStatus.SelectedIndex = -1;
             addProducts_imageView.Image = null;
         }
 
@@ -263,7 +275,7 @@ namespace SistemaEstoque
                 }
 
 
-                addProducts_prodStatus.Text = row.Cells[7].Value.ToString();
+                //addProducts_prodStatus.Text = row.Cells[7].Value.ToString();
             }
         }
 
@@ -295,7 +307,18 @@ namespace SistemaEstoque
                                 updateD.Parameters.AddWithValue("@cat", addProducts_category.SelectedItem);
                                 updateD.Parameters.AddWithValue("@price", addProducts_prodPrice.Text.Trim());
                                 updateD.Parameters.AddWithValue("@stock", addProducts_prodStock.Text.Trim());
-                                updateD.Parameters.AddWithValue("@status", addProducts_prodStatus.SelectedItem);
+
+                                string status = "";
+                                if (Convert.ToInt32(addProducts_prodStock.Text) > 0)
+                                {
+                                    status = "Disponível";
+                                }
+                                else
+                                {
+                                    status = "Não disponível";
+                                }
+                                updateD.Parameters.AddWithValue("@status", status);
+
 
                                 updateD.ExecuteNonQuery();
                                 clearFields();
@@ -367,6 +390,7 @@ namespace SistemaEstoque
             }
 
         }
+
     }
 }
 
