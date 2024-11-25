@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.login_showPass = new System.Windows.Forms.CheckBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -39,7 +40,6 @@
             this.login_username = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.close = new System.Windows.Forms.Button();
-            this.login_showPass = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -63,6 +63,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(600, 460);
             this.panel1.TabIndex = 0;
+            // 
+            // login_showPass
+            // 
+            this.login_showPass.AutoSize = true;
+            this.login_showPass.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.login_showPass.Location = new System.Drawing.Point(312, 288);
+            this.login_showPass.Name = "login_showPass";
+            this.login_showPass.Size = new System.Drawing.Size(126, 22);
+            this.login_showPass.TabIndex = 18;
+            this.login_showPass.Text = "Mostrar senha";
+            this.login_showPass.UseVisualStyleBackColor = true;
+            this.login_showPass.CheckedChanged += new System.EventHandler(this.login_showPass_CheckedChanged);
             // 
             // pictureBox3
             // 
@@ -126,6 +138,7 @@
             this.login_btn.Text = "Entrar";
             this.login_btn.UseVisualStyleBackColor = false;
             this.login_btn.Click += new System.EventHandler(this.login_btn_Click);
+            
             // 
             // login_password
             // 
@@ -166,18 +179,6 @@
             this.close.Text = "X";
             this.close.UseVisualStyleBackColor = false;
             this.close.Click += new System.EventHandler(this.close_Click);
-            // 
-            // login_showPass
-            // 
-            this.login_showPass.AutoSize = true;
-            this.login_showPass.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.login_showPass.Location = new System.Drawing.Point(312, 288);
-            this.login_showPass.Name = "login_showPass";
-            this.login_showPass.Size = new System.Drawing.Size(126, 22);
-            this.login_showPass.TabIndex = 18;
-            this.login_showPass.Text = "Mostrar senha";
-            this.login_showPass.UseVisualStyleBackColor = true;
-            this.login_showPass.CheckedChanged += new System.EventHandler(this.login_showPass_CheckedChanged);
             // 
             // Form1
             // 

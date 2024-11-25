@@ -16,6 +16,16 @@ namespace SistemaEstoque
             displayAllUsersData();
         }
 
+        public void refresData()
+        {
+            if (InvokeRequired)
+            {
+                Invoke((MethodInvoker)refresData);
+                return;
+            }
+            displayAllUsersData();
+        }
+
         public void displayAllUsersData()
         {
             UsersData uData = new UsersData();

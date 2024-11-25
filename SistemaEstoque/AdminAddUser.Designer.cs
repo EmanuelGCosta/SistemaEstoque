@@ -205,8 +205,7 @@
             this.addUsers_status.FormattingEnabled = true;
             this.addUsers_status.Items.AddRange(new object[] {
             "Ativo",
-            "Inativo",
-            "Aprovado"});
+            "Inativo"});
             this.addUsers_status.Location = new System.Drawing.Point(13, 270);
             this.addUsers_status.Name = "addUsers_status";
             this.addUsers_status.Size = new System.Drawing.Size(318, 28);

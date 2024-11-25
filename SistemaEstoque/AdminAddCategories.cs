@@ -16,6 +16,16 @@ namespace SistemaEstoque
             displayCategoriesData();
         }
 
+        public void refresData()
+        {
+            if (InvokeRequired)
+            {
+                Invoke((MethodInvoker)refresData);
+                return;
+            }
+            displayCategoriesData();
+        }
+
         public void displayCategoriesData()
         {
             CategoriesData cData = new CategoriesData();
@@ -199,6 +209,11 @@ namespace SistemaEstoque
                     }
                 }
             }
+        }
+
+        private void addCategory_clearBtn_Click(object sender, EventArgs e)
+        {
+            clearFields();
         }
     }
 }
