@@ -44,7 +44,7 @@ namespace SistemaEstoque
         public bool checkEmptyFIelds()
         {
             if (addProducts_prodID.Text == "" || addProducts_prodName.Text == "" || addProducts_category.SelectedIndex == -1
-                || addProducts_prodPrice.Text == "" || addProducts_prodStock.Text == "" || addProducts_imageView.Image == null)
+                || addProducts_prodPrice.Text == "" || addProducts_prodStock.Text == "")
             {
                 return true;
             }
@@ -122,23 +122,10 @@ namespace SistemaEstoque
                             }
                             else
                             {
-                                string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-
-                                string relativePath = Path.Combine("Products_Directory", addProducts_prodID.Text.Trim() + ".jpg");
-                                string path = Path.Combine(baseDirectory, relativePath);
-
-                                string directoryPath = Path.GetDirectoryName(path);
-
-                                if (!Directory.Exists(directoryPath))
-                                {
-                                    Directory.CreateDirectory(directoryPath);
-                                }
-
-                                File.Copy(addProducts_imageView.ImageLocation, path, true);
 
                                 string insertData = "INSERT INTO products " +
-                                    "(prod_id, prod_name, category, price, stock, image_path, status, date_insert) " +
-                                    "VALUES (@prodID, @prodName, @cat, @price, @stock, @path, @status, @date)";
+                                    "(prod_id, prod_name, category, price, stock, status, date_insert) " +
+                                    "VALUES (@prodID, @prodName, @cat, @price, @stock, @status, @date)";
 
                                 using (SqlCommand insertD = new SqlCommand(insertData, connect))
                                 {
@@ -147,7 +134,6 @@ namespace SistemaEstoque
                                     insertD.Parameters.AddWithValue("@cat", addProducts_category.SelectedItem);
                                     insertD.Parameters.AddWithValue("@price", addProducts_prodPrice.Text.Trim());
                                     insertD.Parameters.AddWithValue("@stock", addProducts_prodStock.Text.Trim());
-                                    insertD.Parameters.AddWithValue("@path", path);
 
                                     string status = "";
                                     if (Convert.ToInt32(addProducts_prodStock.Text) > 0)
@@ -206,33 +192,7 @@ namespace SistemaEstoque
             addProducts_prodPrice.Text = "";
             addProducts_prodStock.Text = "";
             //addProducts_prodStatus.SelectedIndex = -1;
-            addProducts_imageView.Image = null;
-        }
-
-        private void addProducts_importBtn_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                OpenFileDialog dialog = new OpenFileDialog();
-                dialog.Filter = "image Files (*.jpg; *.png)|*.jpg;*.png";
-                string imagePath = "";
-
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    imagePath = dialog.FileName;
-                    addProducts_imageView.ImageLocation = imagePath;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-            finally
-            {
-
-            }
-
+            //addProducts_imageView.Image = null;
         }
 
         private void buaddProducts_clearBtn_Click(object sender, EventArgs e)
@@ -255,26 +215,7 @@ namespace SistemaEstoque
                 addProducts_prodPrice.Text = row.Cells[4].Value.ToString();
                 addProducts_prodStock.Text = row.Cells[5].Value.ToString();
 
-                string imagePath = row.Cells[6].Value.ToString();
-
-                try
-                {
-                    if (imagePath != null)
-                    {
-                        addProducts_imageView.Image = Image.FromFile(imagePath);
-                    }
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Erro de imagem: " + ex, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                finally
-                {
-
-                }
-
-
+                //string imagePath = row.Cells[6].Value.ToString();
                 //addProducts_prodStatus.Text = row.Cells[7].Value.ToString();
             }
         }

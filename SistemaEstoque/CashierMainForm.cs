@@ -13,8 +13,8 @@ namespace SistemaEstoque
 
         public void displayUsername()
         {
-            string username = Form1.username.Substring(0, 1).ToUpper() + Form1.username.Substring(1).ToLower();
-            user_username.Text = username;
+            //string username = Form1.username.Substring(0, 1).ToUpper() + Form1.username.Substring(1).ToLower();
+            //user_username.Text = username;
         }
 
         private void leave_btn_Click(object sender, EventArgs e)

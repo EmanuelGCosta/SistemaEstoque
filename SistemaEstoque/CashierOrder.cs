@@ -290,6 +290,7 @@ namespace SistemaEstoque
                         connect.Open();
 
                         float getPrice = 0;
+                        int getStock = 0;
                         string selectOrder = "SELECT * FROM products WHERE prod_id = @prodID";
 
                         using (SqlCommand getOrder = new SqlCommand(selectOrder, connect))
@@ -301,37 +302,50 @@ namespace SistemaEstoque
                                 if (reader.Read())
                                 {
                                     object rawValue = reader["price"];
+                                    object rawStock = reader["stock"];
 
                                     if (rawValue != DBNull.Value)
                                     {
                                         getPrice = Convert.ToSingle(rawValue);
                                     }
+
+                                    if (rawStock != DBNull.Value)
+                                    {
+                                        getStock = Convert.ToInt32(rawStock);
+                                    }
                                 }
                             }
                         }
 
-                        string insertData = "INSERT INTO orders (customer_id, prod_id, prod_name, category, qty, orig_price, total_price, order_date) " +
-                                                        "VALUES(@cID, @prodID, @prodName, @cat, @qty, @origPrice, @totalPrice, @date)";
-
-                        using (SqlCommand cmd = new SqlCommand(insertData, connect))
+                        if (getStock >= cashierOrder_qty.Value)
                         {
-                            cmd.Parameters.AddWithValue("@cID", idGen);
-                            cmd.Parameters.AddWithValue("@prodID", cashierOrder_prodID.SelectedItem);
-                            cmd.Parameters.AddWithValue("@prodName", cashierOrder_prodName.Text.Trim());
-                            cmd.Parameters.AddWithValue("@cat", cashierOrder_category.SelectedItem);
-                            cmd.Parameters.AddWithValue("@qty", cashierOrder_qty.Value);
-                            cmd.Parameters.AddWithValue("@origPrice", getPrice);
+                            string insertData = "INSERT INTO orders (customer_id, prod_id, prod_name, category, qty, orig_price, total_price, order_date) " +
+                                                            "VALUES(@cID, @prodID, @prodName, @cat, @qty, @origPrice, @totalPrice, @date)";
+
+                            using (SqlCommand cmd = new SqlCommand(insertData, connect))
+                            {
+                                cmd.Parameters.AddWithValue("@cID", idGen);
+                                cmd.Parameters.AddWithValue("@prodID", cashierOrder_prodID.SelectedItem);
+                                cmd.Parameters.AddWithValue("@prodName", cashierOrder_prodName.Text.Trim());
+                                cmd.Parameters.AddWithValue("@cat", cashierOrder_category.SelectedItem);
+                                cmd.Parameters.AddWithValue("@qty", cashierOrder_qty.Value);
+                                cmd.Parameters.AddWithValue("@origPrice", getPrice);
 
 
-                            float totalP = (getPrice * (int)cashierOrder_qty.Value);
-                            cmd.Parameters.AddWithValue("@totalPrice", totalP);
+                                float totalP = (getPrice * (int)cashierOrder_qty.Value);
+                                cmd.Parameters.AddWithValue("@totalPrice", totalP);
 
-                            DateTime today = DateTime.Today;
-                            cmd.Parameters.AddWithValue("@date", today);
+                                DateTime today = DateTime.Today;
+                                cmd.Parameters.AddWithValue("@date", today);
 
-                            cmd.ExecuteNonQuery();
-                            MessageBox.Show("Pedido feito com sucesso!", "Mensagem de êxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                cmd.ExecuteNonQuery();
+                                MessageBox.Show("Pedido feito com sucesso!", "Mensagem de êxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Estoque insuficiente! Por favor, selecione uma quantidade menor ou aguarde o reabastecimento.", "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
 
                     }
@@ -391,12 +405,11 @@ namespace SistemaEstoque
             }
             displayOrders();
             displayTotalPrice();
+
+            cashierOrder_totalPrice.Text = "0,00";
         }
         private int prodID = 0;
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1)
@@ -438,24 +451,9 @@ namespace SistemaEstoque
                         {
                             connect.Open();
 
-                            string insertData = "INSERT INTO customers (customer_id, total_price, amount, change, order_date) VALUES(@cID, @totalPrice, @amount, @change, @date)";
-
-                            using (SqlCommand cmd = new SqlCommand(insertData, connect))
-                            {
-                                cmd.Parameters.AddWithValue("@cID", idGen);
-                                cmd.Parameters.AddWithValue("@totalPrice", Convert.ToSingle(cashierOrder_totalPrice.Text));
-                                cmd.Parameters.AddWithValue("@amount", Convert.ToSingle(cashierOrder_amount.Text));
-                                cmd.Parameters.AddWithValue("@change", Convert.ToSingle(cashierOrder_change.Text));
-
-                                DateTime today = DateTime.Today;
-                                cmd.Parameters.AddWithValue("@date", today);
-
-                                cmd.ExecuteNonQuery();
-                                MessageBox.Show("Pedido pago com sucesso!", "Mensagem de êxito!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                                clearFields();
-                            }
-
+                            updateCustomersDB();
+                            updateProductQtyDB();
+                            removeOrdersDB();
                         }
                         catch (Exception ex)
                         {
@@ -469,7 +467,115 @@ namespace SistemaEstoque
                 }
             }
             displayTotalPrice();
+        }
 
+        private void updateCustomersDB()
+        {
+            string insertData = "INSERT INTO customers (customer_id, total_price, amount, change, order_date) VALUES(@cID, @totalPrice, @amount, @change, @date)";
+
+            using (SqlCommand cmd = new SqlCommand(insertData, connect))
+            {
+                cmd.Parameters.AddWithValue("@cID", idGen);
+                cmd.Parameters.AddWithValue("@totalPrice", Convert.ToSingle(cashierOrder_totalPrice.Text));
+                cmd.Parameters.AddWithValue("@amount", Convert.ToSingle(cashierOrder_amount.Text));
+                cmd.Parameters.AddWithValue("@change", Convert.ToSingle(cashierOrder_change.Text));
+
+                DateTime today = DateTime.Today;
+                cmd.Parameters.AddWithValue("@date", today);
+
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Pedido pago com sucesso!", "Mensagem de êxito!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                clearFields();
+
+                cashierOrder_totalPrice.Text = "0,00";
+                cashierOrder_amount.Text = "";
+                cashierOrder_change.Text = "0,00";
+            }
+        }
+
+        private void updateProductQtyDB()
+        {
+            string selectAllOrders = "SELECT * FROM orders";
+
+            List<int> getQty = new List<int>();
+            List<string> getId = new List<string>();
+            using (SqlCommand cmd = new SqlCommand(selectAllOrders, connect))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        object rawQty = reader["qty"];
+                        object id = reader["prod_id"];
+
+                        if (rawQty != DBNull.Value)
+                        {
+                            getQty.Add(Convert.ToInt32(rawQty));
+                        }
+                        if (id != DBNull.Value)
+                        {
+                            getId.Add(Convert.ToString(id));
+                        }
+                    }
+                }
+            }
+
+            string selectProducts = "SELECT * FROM products WHERE prod_id = @pid";
+            string updateData = "UPDATE products SET stock = @updatedStock, status = @status WHERE prod_id = @pid";
+
+            for (int i = 0; i < getId.Count; i++)
+            {
+                using (SqlCommand sData = new SqlCommand(selectProducts, connect))
+                {
+                    sData.Parameters.AddWithValue("@pid", getId[i]);
+                    int getStock = 0;
+
+                    using (SqlDataReader reader2 = sData.ExecuteReader())
+                    {
+                        if (reader2.Read())
+                        {
+                            Object Stock = reader2["stock"];
+
+                            if (Stock != DBNull.Value)
+                            {
+                                getStock = Convert.ToInt32(Stock);
+                            }
+                        }
+                    }
+
+                    using (SqlCommand uData = new SqlCommand(updateData, connect))
+                    {
+                        Console.WriteLine(getQty[i] + "----" + getStock);
+                        uData.Parameters.AddWithValue("@updatedStock", getStock - getQty[i]);
+                        uData.Parameters.AddWithValue("@pid", getId[i]);
+
+                        if (getStock - getQty[i] <= 0)
+                        {
+                            uData.Parameters.AddWithValue("@status", "Não disponível");
+                        }
+                        else
+                        {
+                            uData.Parameters.AddWithValue("@status", "Disponível");
+                        }
+
+                        uData.ExecuteNonQuery();
+                        displayAllAvaibleProducts();
+                    }
+                }
+
+            }
+        }
+
+        private void removeOrdersDB()
+        {
+            string deleteData = "DELETE FROM orders";
+
+            using (SqlCommand cmd = new SqlCommand(deleteData, connect))
+            {
+                cmd.ExecuteNonQuery();
+                displayOrders();
+            }
         }
 
         private void cashierOrder_amount_KeyDown(object sender, KeyEventArgs e)
@@ -483,8 +589,7 @@ namespace SistemaEstoque
 
                     if (getChange <= -1)
                     {
-                        cashierOrder_amount.Text = "";
-                        cashierOrder_change.Text = "";
+                        MessageBox.Show("Valor insufiente!", "Mensagem de erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
@@ -495,7 +600,7 @@ namespace SistemaEstoque
                 {
                     MessageBox.Show("Algo deu errado! " + ex, "Mensagem de erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     cashierOrder_amount.Text = "";
-                    cashierOrder_change.Text = "";
+                    cashierOrder_change.Text = "0,00";
                 }
 
             }
@@ -518,7 +623,7 @@ namespace SistemaEstoque
                 printPreviewDialog1.ShowDialog();
 
                 cashierOrder_amount.Text = "";
-                cashierOrder_change.Text = "";
+                cashierOrder_change.Text = "0,00";
             }
 
         }
@@ -607,9 +712,6 @@ namespace SistemaEstoque
             string labelText = today.ToString();
             y = e.MarginBounds.Bottom - labelMargin - labelFont.GetHeight(e.Graphics);
             e.Graphics.DrawString(labelText, labelFont, Brushes.Black, e.MarginBounds.Right - e.Graphics.MeasureString("----------", labelFont).Width, y);
-
-
-
         }
     }
 }

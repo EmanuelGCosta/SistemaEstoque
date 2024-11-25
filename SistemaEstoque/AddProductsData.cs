@@ -11,7 +11,7 @@ namespace SistemaEstoque
         public string Categoria { get; set; } // 3
         public string Preco { get; set; } // 4
         public string Estoque { get; set; } // 5
-        public string ImagePath { get; set; } // 6
+        //public string ImagePath { get; set; } // 6
         public string Status { get; set; } // 7
         public string Data { get; set; } // 8
 
@@ -39,7 +39,7 @@ namespace SistemaEstoque
                         apData.Categoria = reader["category"].ToString();
                         apData.Preco = reader["price"].ToString();
                         apData.Estoque = reader["stock"].ToString();
-                        apData.ImagePath = reader["image_path"].ToString();
+                        //apData.ImagePath = reader["image_path"].ToString();
                         apData.Status = reader["status"].ToString();
                         apData.Data = reader["date_insert"].ToString();
 
@@ -78,7 +78,7 @@ namespace SistemaEstoque
                         apData.Categoria = reader["category"].ToString();
                         apData.Preco = reader["price"].ToString();
                         apData.Estoque = reader["stock"].ToString();
-                        apData.ImagePath = reader["image_path"].ToString();
+                        //apData.ImagePath = reader["image_path"].ToString();
                         apData.Status = reader["status"].ToString();
                         apData.Data = reader["date_insert"].ToString();
 
