@@ -112,6 +112,9 @@ namespace SistemaEstoque
             login_password.PasswordChar = login_showPass.Checked ? '\0' : '*';
         }
 
+        private void label4_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

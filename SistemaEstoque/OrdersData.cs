@@ -13,11 +13,11 @@ namespace SistemaEstoque
         public int ID { set; get; }
         public string CID { set; get; }
         //public string PID { set; get; }
-        public string PName { set; get; }
-        public string Category { set; get; }
-        public string OrigPrice { set; get; }
-        public string QTY { set; get; }
-        public string TotalPrice { set; get; }
+        public string PNome { set; get; }
+        public string Categoria { set; get; }
+        public string PrecoOrig { set; get; }
+        public string QTD { set; get; }
+        public string PrecoTotal { set; get; }
         //public string Date { set; get; }
 
 
@@ -73,11 +73,11 @@ namespace SistemaEstoque
                             oData.ID = (int)reader["id"];
                             oData.CID = reader["customer_id"].ToString();
                             //oData.PID = reader["prod_id"].ToString();
-                            oData.PName = reader["prod_name"].ToString();
-                            oData.Category = reader["category"].ToString();
-                            oData.OrigPrice = reader["orig_price"].ToString();
-                            oData.QTY = reader["qty"].ToString();
-                            oData.TotalPrice = reader["total_price"].ToString();
+                            oData.PNome = reader["prod_name"].ToString();
+                            oData.Categoria = reader["category"].ToString();
+                            oData.PrecoOrig = reader["orig_price"].ToString();
+                            oData.QTD = reader["qty"].ToString();
+                            oData.PrecoTotal = reader["total_price"].ToString();
                             //oData.Date = reader["order_date"].ToString();
 
                             listData.Add(oData);
