@@ -1,4 +1,4 @@
-# 📦 Controle de Estoque - C# & SQL Server
+<h1 align="center" font-weight: bold;">📦 Controle de Estoque - C# & SQL Server</h1>
 
 ## 📖 Descrição
 O objetivo principal do projeto é garantir o controle eficiente e preciso dos níveis de estoque, permitindo a rastreabilidade dos itens desde a entrada até a saída, além de fornecer relatórios detalhados sobre movimentação, valor dos itens, e status de cada produto.
