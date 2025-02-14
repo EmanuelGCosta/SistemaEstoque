@@ -12,10 +12,10 @@ namespace SistemaEstoque
     {
         public int Id { get; set; }
         public string Usarname { get; set; }
-        public string Password { get; set; }
-        public string Role { get; set; }
+        public string Senha { get; set; }
+        public string Funcao { get; set; }
         public string Status{ get; set; }
-        public string Date {  get; set; }
+        public string Data {  get; set; }
 
         public List<UsersData> AllUsersData()
         {
@@ -37,10 +37,10 @@ namespace SistemaEstoque
                         UsersData uData = new UsersData();
                         uData.Id = (int)reader["id"];
                         uData.Usarname = reader["username"].ToString();
-                        uData.Password = reader["password"].ToString();
-                        uData.Role = reader["role"].ToString();
+                        uData.Senha = reader["password"].ToString();
+                        uData.Funcao = reader["role"].ToString();
                         uData.Status = reader["status"].ToString();
-                        uData.Date = reader["date"].ToString();
+                        uData.Data = reader["date"].ToString();
 
                         listData.Add(uData);
                     }

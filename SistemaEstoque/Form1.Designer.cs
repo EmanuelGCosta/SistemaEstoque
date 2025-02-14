@@ -108,22 +108,23 @@
             this.register_label.AutoSize = true;
             this.register_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.register_label.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.register_label.Location = new System.Drawing.Point(339, 425);
+            this.register_label.Location = new System.Drawing.Point(323, 425);
             this.register_label.Name = "register_label";
-            this.register_label.Size = new System.Drawing.Size(87, 16);
+            this.register_label.Size = new System.Drawing.Size(125, 16);
             this.register_label.TabIndex = 7;
-            this.register_label.Text = "Registre aqui";
+            this.register_label.Text = "Crie uma conta aqui";
             this.register_label.Click += new System.EventHandler(this.label5_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(166, 425);
+            this.label4.Location = new System.Drawing.Point(150, 425);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(167, 16);
             this.label4.TabIndex = 6;
             this.label4.Text = "Não tem uma conta ainda?";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // login_btn
             // 
@@ -138,7 +139,6 @@
             this.login_btn.Text = "Entrar";
             this.login_btn.UseVisualStyleBackColor = false;
             this.login_btn.Click += new System.EventHandler(this.login_btn_Click);
-            
             // 
             // login_password
             // 

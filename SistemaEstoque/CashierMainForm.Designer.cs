@@ -102,7 +102,7 @@
             this.customers_btn.Name = "customers_btn";
             this.customers_btn.Size = new System.Drawing.Size(236, 52);
             this.customers_btn.TabIndex = 14;
-            this.customers_btn.Text = "Clientes";
+            this.customers_btn.Text = "Vendas";
             this.customers_btn.UseVisualStyleBackColor = true;
             this.customers_btn.Click += new System.EventHandler(this.customers_btn_Click);
             // 
